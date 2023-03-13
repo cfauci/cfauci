@@ -5,5 +5,5 @@ Hi There! I'm Christi Fauci (@cfauci)
 * I've worked in both a Linux environment and on MacOS
 * A lot of my large-scale projects have been completed on Duke's Computing Cluster where we use the Slurm job scheduler
 * Email: cf189@duke.edu
-* Check out the Lowe Lab: [Vertebrate Genetics Lab](vertgenlab.org)
+* Check out the Lowe Lab: [Vertebrate Genetics Lab](http://vertgenlab.org)
 
