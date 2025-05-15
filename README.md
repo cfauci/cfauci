@@ -1,4 +1,4 @@
-Hi There! I'm Christi Fauci (@cfauci)
+Hi There! I'm Dr. Christi Fauci (@cfauci)
 
 * I've earned a PhD in Genetics and Genomics at Duke University where I've spent a lot of my time developing software for our bioinformatics-focused code-base [*gonomics*](https://github.com/vertgenlab/gonomics)
 * I have experience with Go, R, Bash, C shell, Z shell and Awk
