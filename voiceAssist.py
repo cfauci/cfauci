@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# Notes: requires Python 3.10 (any higher and whisper fails, any lower and other models fail
+# Notes: designed to run on a CPU with low memory requirements
+#inspired by https://medium.com/data-science/building-a-local-voice-assistant-with-llms-and-neural-networks-on-your-cpu-laptop-95a876c11130
+#requires Python 3.10 (any higher and whisper fails, any lower and other models fail
 #requires ollama set up
 #Instructions for setting up whisper (there are at least three other ways that failed for me setting it up): 
 #https://medium.com/@bhuwanmishra_59371/a-starter-guide-to-whisper-cpp-f238817fd876
@@ -15,11 +17,10 @@ import re
 
 samplingRate=16000 #set to the same as whisper
 
-# you would need to make an adjustment here to account for a trigger word. Whatever control sequence you have to keep the mic 
-#listening for a trigger word, would then trigger this program.
+# Could adjust this section to account for a trigger word. 
 
 # Record audio using sounddevice
-duration=5 #this can be changed to a different length of time, or some other trigger (maybe dead air i'm not sure about that one)
+duration=5 #this can be changed to a different length of time
 recordedAudio = sd.rec(
     int(duration * samplingRate),
     samplerate=samplingRate,
@@ -42,7 +43,7 @@ with wave.open(audio_file, "w") as wf:
     wf.setframerate(samplingRate)
     wf.writeframes(recordedAudio.tobytes())
 
-
+#intrested to see if I can replace the whisper call here with a python built speech to text package, how reliable it would be
 WHISPER_BINARY_PATH = "/usr/local/bin/whisper-cpp" # brew install
 MODEL_PATH = "/Users/cfauci/github/whisper.cpp/models/ggml-base.en.bin" #cloned copy of repository with all the models (in notes at top)
 
@@ -108,10 +109,6 @@ Please ignore the text [BLANK_AUDIO]. Given this question: "{concatenated_text},
 """
 answer = run_ollama_command(model="qwen:0.5b", prompt=prompt)
 
-#this is the final text output, variable is answer, 
-#definitely remove the "response from Ollama" string, but you could add some other framing phrase
-
-
 # This is my alternative to using the NeMo package(that version is below the "#engine.runAndWait() call", which is among the problems I'm having. 
 #I think we may be able to simplify away from whisper with something similar (python prebuilt speech to text)
 
@@ -119,9 +116,6 @@ answer = run_ollama_command(model="qwen:0.5b", prompt=prompt)
 #engine = pyttsx3.init()
 #engine.say(answer)
 #engine.runAndWait()
-
-
-# this is the part of that article where I couldn't get it to build. I think the problem was in my venv.
 
 #if you wanted to make this part work, you will need pytorch, torchvision and torchaudio, as well as the nemo-tts module
 
