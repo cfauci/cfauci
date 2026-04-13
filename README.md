@@ -4,5 +4,5 @@ Hi There! I'm Dr. Christi Fauci (@cfauci)
 * I have experience with Go, Python, R, Bash, C shell, Z shell and Awk
 * I've worked in both a Linux environment and on MacOS
 * A lot of my large-scale projects have been completed on Duke's Computing Cluster where we use the Slurm job scheduler
-* Email: cf189@duke.edu
+* Email: christi.fauci@gmail.com
 
